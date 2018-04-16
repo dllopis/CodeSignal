@@ -1,4 +1,6 @@
+package quickChallenges;
 import java.util.ArrayList;
+import java.util.Collections;
 /*
  * Dennis LLopis - ZigZag Challenge
  * 
@@ -19,7 +21,7 @@ import java.util.ArrayList;
 	 */
 	   public static int zigZag(int a[])
 	    {
-		   ArrayList<Integer> array = null;
+		   ArrayList<Integer> array = new ArrayList<Integer>();
 		   
 		   	// stores result of longest zigZag found
 	        int result = 0;
@@ -59,6 +61,7 @@ import java.util.ArrayList;
 	        	   
 	        	    if(lengthOfZigZag > result)
 	        	    {
+	        	    
 	        	    	result = lengthOfZigZag;
 	        	    }
 	            }
@@ -113,7 +116,6 @@ import java.util.ArrayList;
 		    }
 		    	return lengthOfZigZag;
 		}
-		
 	public static void main(String[] args) {
 
 		//test cases
@@ -123,6 +125,8 @@ import java.util.ArrayList;
 		int[] d	= {2, 1, 4, 4, 1, 4, 4, 1, 2, 0, 1, 0, 0, 3, 1, 3, 4, 1, 3, 4};
 		int[] e = {5, 3, 5, 3} ;
 		
-		System.out.println("Longest ZigZag subArray: " + zigZag(a));
+		   
+		System.out.println("Longest ZigZag subArray: " + zigZag(d));
+		}
 	}
-}
+

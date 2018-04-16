@@ -1,3 +1,4 @@
+package arcadeChallenges;
 import java.util.ArrayList;
 
 public class AlmostIncreasingSequence {

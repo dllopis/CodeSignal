@@ -1,3 +1,4 @@
+package interviewPractice;
 
 public class FirstDuplicate {
 	// time out error with this attempt!

@@ -1,3 +1,4 @@
+package arcadeChallenges;
 import java.util.LinkedList;
 
 public class IsLucky {
