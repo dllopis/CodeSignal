@@ -7,23 +7,7 @@ public class MatrixElementsSums {
 								{0, 5, 0, 0}, 
 								{2, 0, 3, 3}
 	                          };
-	
-	public static int columnSum(int [][] array){
 
-	    int size = array[0].length; // Replace it with the size of maximum length inner array
-	    int sum = 0;
-
-	    for (int i = 0; i < array.length; i++){
-	        for (int j = 0; j < array[i].length; j++){
-	        	if(array[i][j] >=1)
-	            sum += array[i][j];  // Note that, I am adding to `temp[j]`.
-	        	
-	        }
-	    }
-
-	    //System.out.println(Arrays.toString(temp));
-	    return sum;  // Note you are not using this return value in the calling method
-	}
 	static int matrixElementsSum(int[][] matrix) {
 
 	  	  int sum = 0;
@@ -41,7 +25,6 @@ public class MatrixElementsSums {
 		    		else
 		    			break;
 		    	}
-		    	//System.out.println("");
 		    }
 		    
 		    return sum;  
