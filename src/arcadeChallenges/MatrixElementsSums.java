@@ -46,7 +46,6 @@ public class MatrixElementsSums {
 		
 		//displayMatrix(m);
 		System.out.println("Matrix Sum: " + matrixElementsSum(m));
-		System.out.println("Matrix Sum: " + columnSum(m));
 	}
 
 }
