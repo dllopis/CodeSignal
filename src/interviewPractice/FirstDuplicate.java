@@ -18,7 +18,7 @@ public class FirstDuplicate {
         for(int i = 0;i<a.length;i++){
         	
         	// if false occurs, then we've found a dupe
-            if(keys.add(a[i]) == false)
+            if(!keys.add(a[i]))
             {
             	// save the current index in order to compare for which duplicate occurred first
             	int currIndex = i;
