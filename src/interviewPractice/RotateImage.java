@@ -3,9 +3,8 @@ package interviewPractice;
 public class RotateImage {
 	
 	static int[][] a = 	{{1,2,3},
-						 {4,5,6},
-						 {7,8,9}};
-	
+				 {4,5,6},
+				 {7,8,9}};
 	
 	public static void displayMatrix(int[][] array)
 	{
