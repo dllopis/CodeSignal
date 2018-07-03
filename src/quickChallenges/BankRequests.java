@@ -48,70 +48,77 @@ public class BankRequests {
 			// based on parsed request, switch will take care of which action to perform
 			switch(request)
 			{
-				case "withdraw":	account = Integer.parseInt(parsedRequest[1]);
+				case "withdraw":	
+					
+					account = Integer.parseInt(parsedRequest[1]);
 									
-									if(account > accounts.length)
-									{
-										int[] a = new int[1];
-										a[0] = -(i+1);
-										System.out.println("Invalid Request: " + a[0]);
-										return a;
-									}
+					if(account > accounts.length)
+					{
+						int[] a = new int[1];
+						a[0] = -(i+1);
+						System.out.println("Invalid Request: " + a[0]);
+						return a;
+					}
 									
-									withdrawAmount = Integer.parseInt(parsedRequest[2]);
-									
-									if(accounts[account-1] < withdrawAmount)
-									{
-										int[] a = new int[1];
-										a[0] = -(i+1);
-										System.out.println("Invalid Request: " + a[0]);
-										return a;
-									}
-									
-									withdrawFunds(accounts,account,withdrawAmount);
-									break;
+					withdrawAmount = Integer.parseInt(parsedRequest[2]);
+					
+					if(accounts[account-1] < withdrawAmount)
+					{
+						int[] a = new int[1];
+						a[0] = -(i+1);
+						System.out.println("Invalid Request: " + a[0]);
+						return a;
+					}
+					withdrawFunds(accounts,account,withdrawAmount);
+					break;
 								
-				case "deposit" : 	account = Integer.parseInt(parsedRequest[1]);
+				case "deposit" : 	
+					
+					account = Integer.parseInt(parsedRequest[1]);
 				
-									if(account > accounts.length)
-									{
-										int[] a = new int[1];
-										a[0] = -(i+1);
-										System.out.println("Invalid Request: " + a[0]);
-										return a;
-									}
-									
-									depositAmount = Integer.parseInt(parsedRequest[2]);
-									depositFunds(accounts,account,depositAmount);
-									
-									break;
+					if(account > accounts.length)
+					{
+						int[] a = new int[1];
+						a[0] = -(i+1);
+						System.out.println("Invalid Request: " + a[0]);
+						return a;
+					}
+					
+					depositAmount = Integer.parseInt(parsedRequest[2]);
+					depositFunds(accounts,account,depositAmount);
+					
+					break;
 								
-				case "transfer":	if(accounts.length <= 1)
-									{
-										int[] a = new int[1];
-										a[0] = -(i+1);
-										System.out.println("Invalid Request: " + a[0]);
-										return a;
-									}
-									account = Integer.parseInt(parsedRequest[1]);
-									account2 = Integer.parseInt(parsedRequest[2]);
-									transferAmount = Integer.parseInt(parsedRequest[3]);
-									
-									if(accounts[account-1] < transferAmount||account > accounts.length || account2 > accounts.length)
-									{
-										int[] a = new int[1];
-										a[0] = -(i+1);
-										System.out.println("Invalid Request: " + a[0]);
-										return a;
-									}
-									transferFunds(accounts,account,account2,transferAmount);
-									break; 
+				case "transfer":	
+					
+					if(accounts.length <= 1)
+					{
+						int[] a = new int[1];
+						a[0] = -(i+1);
+						System.out.println("Invalid Request: " + a[0]);
+						return a;
+					}
+					
+					account = Integer.parseInt(parsedRequest[1]);
+					account2 = Integer.parseInt(parsedRequest[2]);
+					transferAmount = Integer.parseInt(parsedRequest[3]);
+					
+					if(accounts[account-1] < transferAmount||account > accounts.length || account2 > accounts.length)
+					{
+						int[] a = new int[1];
+						a[0] = -(i+1);
+						System.out.println("Invalid Request: " + a[0]);
+						return a;
+					}
+					transferFunds(accounts,account,account2,transferAmount);
+					break; 
 			
 									default:	break;// invalid
 			}
 		}
 			return accounts;
 		}
+	
 	// helper methods
 	private static void withdrawFunds(int[] accounts, int account, int withdrawAmount)
 	{
@@ -125,8 +132,11 @@ public class BankRequests {
 	}
 	private static void transferFunds(int[] accounts, int ithAcc, int jthAcc, int transferAmount)
 	{
-				accounts[jthAcc-1] += transferAmount;
-				accounts[ithAcc-1] -= transferAmount;
+		if(ithAcc == jthAcc)
+			return;
+		
+		accounts[jthAcc-1] += transferAmount;
+		accounts[ithAcc-1] -= transferAmount;
 	}
 	public static void displayAccounts(int[] accounts)
 	{

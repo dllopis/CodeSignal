@@ -19,7 +19,7 @@ public class ConstructSubMatrix {
 	    // p is our row pointer for new matrix
 	    int p=0;
 	     
-		// index pointers for our rows and cols to delete
+		// index pointers for our rows to delete
 		int p1 = 0;
 	    
 	    // start constructing matrix based on parameters [ rowsToDelete & columnsToDelete ]
@@ -41,6 +41,7 @@ public class ConstructSubMatrix {
 
 		    // reset position of p2 pointer to first index, so that we can compare jth column again
 		        int p2=0;
+		        
 	        for( int j = 0; j <matrix[0].length; ++j)
 	        {
 	        	// same as above for p1 on line 32, but this handles the columns edge cases
