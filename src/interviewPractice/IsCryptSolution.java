@@ -1,3 +1,4 @@
+package interviewPractice;
 import java.util.HashMap;
 
 public class IsCryptSolution {
