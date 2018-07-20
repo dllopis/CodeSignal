@@ -1,14 +1,7 @@
 package interviewPractice;
 
-import java.util.LinkedList;
-
 public class ReArrangeLastN {
 
-
-	public ReArrangeLastN()	{
-		
-	}
-	
 	ListNode<Integer> rearrangeLastN(ListNode<Integer> l, int n) {
 		
 	/*
