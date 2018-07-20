@@ -3,22 +3,27 @@ package interviewPractice;
 import java.util.ArrayList;
 
 public class IsListPalindrome {
-
+	
 	public boolean isListPalindrome(ListNode<Integer> l) {
 		
 		// current will serve as our reference node as we traverse through each node
 		ListNode<Integer> current = l;
+		
 		// get a printout of what are list consist of
 		System.out.print("ListNode: ");
+		
 		while(current != null)	{
 			System.out.print(current.value + " ");
 			current = current.next;
 		}System.out.println("");
+		
 		// reinitialize our current to starting node
 		current = l;
+		
 		//create an arraylist in order to store our list and check for palindrome condition
 		//this will serve as the additional O(1) space complexity to solve this in O(n) time complexity
 		ArrayList<Integer> a = new ArrayList<Integer>();
+		
 		//traverse through and add each node's value to arraylist a
 		while(current != null)	{
 			a.add(current.value);

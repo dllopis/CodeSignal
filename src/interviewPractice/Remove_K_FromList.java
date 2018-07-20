@@ -1,49 +1,32 @@
 package interviewPractice;
 
-
-class ListNode<T> {
-	
-	ListNode(T x) {
-		value = x;
-	}
-    T value;
-    ListNode<T> next;
-    
-}
-
 public class Remove_K_FromList {
 	
-
-		
 	ListNode<Integer> removeKFromList(ListNode<Integer> l, int k) {
 		
-	ListNode<Integer> listNode = new ListNode<Integer>(0); 	// will create a starting node
-	ListNode<Integer> current = listNode; 	// will modify the links between nodes to remove k
+	ListNode<Integer> head = new ListNode<Integer>(0); 	// will create a starting node
+	ListNode<Integer> temp = head; 	// will modify the links between nodes to remove k
 	
 	// iterate through each node value until null is encountered
     while(l != null)	{
-        
-    	// check to see if current node value is not equal to k
-    	if(l.value != k)	{ // if not -- add to temps node and move the pointer to next node for temp
-    		current.next = l;
-    		current = current.next;
-        } 
-        // move l's node pointer to check next node value
-    	l = l.next;
+       if(l.value != k)	{
+    	   temp.next = new ListNode<Integer>(l.value);
+    	   temp = temp.next;    	   
+       }
+       l = l.next;
     }
-    	current.next = null;
-	     return listNode.next; // return the first ListNode
-	}
+    return head.next;
+}
 	
 	public static void main(String[] args) {
 		
 		// create nodes with values
 		ListNode<Integer> n1 = new ListNode<Integer>(1);
-		ListNode<Integer> n2 = new ListNode<Integer>(2);
-		ListNode<Integer> n3 = new ListNode<Integer>(3);
-		ListNode<Integer> n4 = new ListNode<Integer>(4);
-		ListNode<Integer> n5 = new ListNode<Integer>(5);
-		ListNode<Integer> n6 = new ListNode<Integer>(6);
+		ListNode<Integer> n2 = new ListNode<Integer>(5);
+		ListNode<Integer> n3 = new ListNode<Integer>(5);
+		ListNode<Integer> n4 = new ListNode<Integer>(5);
+		ListNode<Integer> n5 = new ListNode<Integer>(3);
+		ListNode<Integer> n6 = new ListNode<Integer>(3);
 		ListNode<Integer> n7 = new ListNode<Integer>(7);
 		
 		// link nodes together
@@ -58,26 +41,29 @@ public class Remove_K_FromList {
 		// establish a starting node
 		ListNode<Integer> current = n1;
 		
+		System.out.print("Original List: ");
 		// iterate through each node and printout value
 		while(current != null)
 		{
-			System.out.println(current.value);
+			System.out.print(current.value + " ");
 			// set next node as current
 			current = current.next;
-		}
+		}System.out.println("");
 		
 		Remove_K_FromList removeK = new Remove_K_FromList();
-		current = removeK.removeKFromList(n1, 10);
+		int k = 5;
+		current = removeK.removeKFromList(n1, k);
 	  
 		System.out.println("");
 		
+		System.out.print("Modified List -- removed instances of [" + k + "]: "); 
 		// iterate through each node and printout value
 		while(current != null)
 		{
-			System.out.println(current.value);
+			System.out.print(current.value + " ");
 			// set next node as current
 			current = current.next;
-		}
+		}System.out.println("");
 	}
 
 }
