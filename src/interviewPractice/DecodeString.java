@@ -4,11 +4,14 @@ import java.util.Stack;
 
 public class DecodeString {
 
+	int count = 0;
 	/*
 	 * Plan of attack:
 	 * 	Two stacks: 1. Strings to be decoded
 	 * 				2. Individual String to decode from Strings stack
 	 * 				3. append to result string and return
+	 * 				4. use a count to check if output length is equal to the number of characters decoded
+	 * 					if not, recall method and process string again.
 	 */
 	
 	Stack<String> strings = new Stack<String>();
@@ -22,7 +25,7 @@ public class DecodeString {
 		strings = storeStrings(s);
 		
 		// 2. decode each string in strings stack and concatenate
-		result = decodeString();
+		result = decodeStringHelper();
 		
 		return result;
 	}
@@ -39,6 +42,7 @@ public class DecodeString {
 			
 			if(Character.isLetter(c))	{
 				temp += c;
+				count++;
 			}
 			else if(Character.isDigit(c))	{
 				if(temp.length() > 0)	{
@@ -74,7 +78,7 @@ public class DecodeString {
 		return strings;
 	}
 
-	private String decodeString()	{
+	private String decodeStringHelper()	{
 		String output = "";
 		String temp = "";
 		
@@ -90,57 +94,49 @@ public class DecodeString {
 		
 		while(!strings.isEmpty())	{
 			temp = strings.pop();
+			checkString = temp;
 			
 			for(int i = 0;i<temp.length();i++)	{
 				char c = temp.charAt(i);
 				
 				if(Character.isDigit(c))	{
 					num = num + c;
-					checkString += c;
-					continue;
 				}
 				else if(Character.isLetter(c))	{
-					checkString += c;
 					decodeString += c;
 				}
 				else if(c == '[')	{
 					openBrace = true;
-					checkString += c;
-					continue;
 				}
 				else if(c == ']')	{
 					closeBrace = true;
-					checkString += c;
-					continue;
 				}
-				
-			}// end of for
+			}
+			
 			if(num.length()>0)	{
 				n = Integer.parseInt(num);
-				num = "";
 			}	
-			if(n > 0 && openBrace == true && closeBrace == true)	{
+			if(openBrace && closeBrace)	{
 				while(n > 0)	{
 					output = decodeString + output;
 					n--;
 				}
-				num = "";
-				decodeString = "";
-				openBrace = false;
-				closeBrace = false;
 			}else	{
-				if(!(openBrace == true && closeBrace == true))
 				output = checkString + output;
 			}
-			if(num.length() == 0)
-				decodeString = "";
-			checkString = "";
-		} // end of while
+			
+			num = "";
+			decodeString = "";
+			openBrace = false;
+			closeBrace = false;
+		}
 		
-		if(n>0){
+		if(output.length() > count){
+			count = 0;
 			storeStrings(output);
-			return decodeString();
-		}else	{
+			return decodeStringHelper();
+		}
+		else	{
 			return output;
 		}
 	}
@@ -155,7 +151,7 @@ public class DecodeString {
 		}System.out.println("==================");
 	}
 	public static void main(String[] args) {
-		String s = "z1[y]zzz2[abc]";
+		String s = "z1[y]zzz2[ab2[c]]";
 		
 		DecodeString decode = new DecodeString();
 		System.out.println("Original: " + s);
