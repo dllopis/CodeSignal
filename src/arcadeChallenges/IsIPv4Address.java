@@ -1,4 +1,4 @@
-package interviewPractice;
+package arcadeChallenges;
 /* Credit: Akarshit Wal
  * 
  * This is a regex solution found on stack overflow and works well for this challenge.
