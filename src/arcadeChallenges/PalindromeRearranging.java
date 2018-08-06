@@ -1,4 +1,4 @@
-package interviewPractice;
+package arcadeChallenges;
 
 import java.util.Arrays;
 
