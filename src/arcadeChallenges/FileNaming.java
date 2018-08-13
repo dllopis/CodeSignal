@@ -3,12 +3,8 @@ package arcadeChallenges;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.Map.Entry;
 
 public class FileNaming {
-
-
-	
 	
 	public String[] fileNaming(String[] names) {
 		// LinkedHashMap to preserve order and quick O(1) lookups and insertions
