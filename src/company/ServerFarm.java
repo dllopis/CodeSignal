@@ -19,11 +19,11 @@ public class ServerFarm {
 		System.out.println(map);
 
 		for(int i = 0;i<jobs.length;i++)	{
-			int maxJob = findMax(map);					// Find job with longest time
+			int maxJob = findMax(map);	// Find job with longest time
 			int minServer = findMin(farmServers,jobs);	// Find server with lowest time
-			farmServers.get(minServer).add(maxJob);		// Add longest job in server with the lowest time
+			farmServers.get(minServer).add(maxJob);	// Add longest job in server with the lowest time
 		}
-		return initializeJaggedArray(farmServers);		// 2D array with jobs farmed
+		return initializeJaggedArray(farmServers);	// 2D array with jobs farmed
 	}
 
 	private void initializeMap(HashMap<Integer,Integer> map, int[] jobs)	{
@@ -64,8 +64,8 @@ public class ServerFarm {
 	}
 	private int[][] initializeJaggedArray(ArrayList<ArrayList<Integer>> a) {
 	    int[][] b = new int[a.size()][];
-	    	for(int i = 0;i<a.size();i++)	{
-			    b[i] = new int[a.get(i).size()];
+		for(int i = 0;i<a.size();i++)	{
+			b[i] = new int[a.get(i).size()];
 			for(int j = 0;j < a.get(i).size();j++)	{
 				b[i][j] = a.get(i).get(j);
 			}
